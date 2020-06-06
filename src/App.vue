@@ -22,6 +22,11 @@ export default {
 
 <style lang="scss">
 .v-application {
-  font-family: 'El Messiri', "Roboto" !important;
+  font-family: 'Cairo', "Roboto" !important;
+  background: #f9f9f9 !important;
+  
+  .v-btn, .btn {
+    letter-spacing: 0 !important;
+  }
 }  
 </style>

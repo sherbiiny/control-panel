@@ -4,16 +4,17 @@
       <v-container>
         <h1>اضافة عميل جديد</h1>
         <!-- Fields -->
-        <v-text-field v-model="cardNum" :rules="cardNumRules" label="رقم البطاقة"></v-text-field>
-        <v-text-field v-model="clientName" label="الإسم الرباعي"></v-text-field>
-        <v-text-field v-model="phone" label="رقم التليفون"></v-text-field>
-        <v-text-field v-model="shopId" @keyup="getTotalPrice()" label="رقم المحل"></v-text-field>  
-        <v-text-field v-model="totalPrice" label="المبلغ الكلي للمحل" disabled></v-text-field>
-        <v-text-field v-model="paid" @keyup="calcMoneyLeft()" label="المقدم المدفوع"></v-text-field>
-        <v-text-field v-model="moneyLeft" label="المبلغ المتبقي" disabled></v-text-field>
-        <v-text-field v-model="date" label="تاريخ الاقساط"></v-text-field>
+        <v-text-field v-model="cardNum" required :rules="cardNumRules" label="رقم البطاقة"></v-text-field>
+        <v-text-field v-model="clientName" required label="الإسم الرباعي"></v-text-field>
+        <v-text-field v-model="phone" required label="رقم التليفون"></v-text-field>
+        <v-text-field v-model="shopId" required @keyup="getTotalPrice()" label="رقم المحل"></v-text-field>  
+        <v-text-field v-model="totalPrice" required label="المبلغ الكلي للمحل" disabled></v-text-field>
+        <v-text-field v-model="paid" required @keyup="calcMoneyLeft()" label="المقدم المدفوع"></v-text-field>
+        <v-text-field v-model="moneyLeft" required label="المبلغ المتبقي" disabled></v-text-field>
+        <v-text-field v-model="date" required label="تاريخ الاقساط"></v-text-field>
         <p v-if="feedback" class="feedback text-center">{{ feedback }}</p>
         <v-btn type="submit">تسجيل</v-btn>
+        <v-icon large @click="$router.push({name: 'Home'})">fa-arrow-circle-left</v-icon>
       </v-container>
     </v-form>
     <v-snackbar v-model="snackbar">
@@ -46,7 +47,7 @@ export default {
 
       // Card number rules
       cardNumRules: [
-        v => (v.length !== 14) || "رقم البطاقة غير صحيح",
+        v => (v && v.length == 14) || "رقم البطاقة غير صحيح",
       ],
     }
   },
